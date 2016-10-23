@@ -1,0 +1,36 @@
+char* reverseVowels(char* s) {
+
+ char vowel[10]={'a','e','i','o','u','A','E','I','O','U'};
+ int *index;
+ int isVowel(char m)
+ {
+     for(int i=0;i<sizeof(vowel);i++)
+     {
+        if(m==vowel[i])
+            return 1;
+     }
+     return 0;
+ }
+ int j=0;
+ for(int i=0;i<strlen(s);i++)
+ {
+    if(isVowel(s[i]))
+    {
+        
+        index[j]= i;
+       j++;
+    }else
+        continue;
+ }
+ 
+  for(int m=0,n=j-1;m<j/2,n>=j/2;m++,n--)  
+  {
+        char temp;
+        temp = s[index[m]];
+        s[index[m]] = s[index[n]];
+        
+        s[index[n]] = temp;
+       
+    }
+ return s;
+}
