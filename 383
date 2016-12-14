@@ -1,0 +1,33 @@
+class Solution {
+public:
+
+    int charR[128]={0};
+
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        /* If both strings are same, then return true */
+        if(ransomNote==magazine)
+            return true;
+
+        /* increment array content by 1 for every letter in string magazine */
+        for(int i=0;i<magazine.length();i++)
+        {
+            charR[magazine[i]]++;
+        }
+
+        /* decrement array content by 1 for every letter in string ransomNote */
+        for(int j=0;j<ransomNote.length();j++)
+        {
+            charR[ransomNote[j]]--;
+        }
+        
+        /* if any content is -1, then false because that letter is extra or not present in magazine string*/
+        for(int k=0;k<128;k++)
+        {
+            if(charR[k]<0)
+                return false;
+        }
+        
+        return true;
+    }
+};
