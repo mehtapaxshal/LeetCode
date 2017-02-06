@@ -7,9 +7,9 @@ public:
         for(int i=0;i<s.length();i++)
         {
             
-            m[s[i]]=m[s[i]]+1;
+            m[s[i]]=m[s[i]]+1;          //store number of times letter occur in string
         }
-        for(int i=0;i<s.length();i++)
+        for(int i=0;i<s.length();i++)   //loop through the same string and check its value in the map, if 1 then return
         {
             if(m[s[i]]==1)
                 return i;
