@@ -1,0 +1,65 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        
+        if(root==NULL)
+            return true;
+        
+        /* Iterative Method */
+        /*
+        queue<TreeNode*> q1,q2;
+        q1.push(root->left);
+        q2.push(root->right);
+        TreeNode* temp1;
+        TreeNode* temp2;
+        while(!q1.empty() && !q2.empty())
+        {
+            
+            temp1=q1.front();
+            q1.pop();
+            temp2=q2.front();
+            q2.pop();
+            if(temp1==NULL && temp2==NULL)
+                continue;
+            else if(temp1==NULL || temp2==NULL)
+                return false;
+            else if(temp1->val!=temp2->val)
+                return false;
+            
+            q1.push(temp1->left);
+            q1.push(temp1->right);
+            q2.push(temp2->right);
+            q2.push(temp2->left);
+            
+        }
+        
+        return true;
+        */
+        else
+            return isMirror(root->left,root->right);
+        
+    }
+    
+    /* Recursive Method */
+    bool isMirror(TreeNode* node1, TreeNode* node2)
+    {
+        
+        if(!node1 && !node2)
+            return true;
+        else if(!node1 || !node2)
+            return false;
+        else if(node1->val != node2->val)
+            return false;
+        
+        return isMirror(node1->left,node2->right) && isMirror(node1->right,node2->left);
+    }
+};
