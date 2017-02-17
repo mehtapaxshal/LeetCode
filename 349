@@ -1,0 +1,78 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        
+        unordered_set<int> myset;
+        myset.insert(nums1.begin(),nums1.end());
+        vector<int> result;
+        
+        for(int i=0;i<nums2.size();i++)
+        {
+            if(myset.erase(nums2[i]))
+                result.push_back(nums2[i]);
+            
+        }
+        
+        return result;
+        
+        
+        
+        // long code
+        
+        /*int size1=nums1.size();
+        int size2=nums2.size();
+        vector<int> result;
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        int temp1=-1,temp2=-1;
+        if(size1>size2)
+        {
+            for(int i=0;i<size2;i++)
+            {
+                if(nums2[i]==temp1)
+                    continue;
+                for(int j=0;j<size1;j++)
+                {
+                    if(nums1[j]==temp2)
+                        continue;
+
+                    if(nums2[i]==nums1[j])
+                    {
+                        result.push_back(nums2[i]);
+                        break;
+                    }else if(nums1[j]>nums2[i])
+                    {
+                        break;
+                    }
+                    temp2=nums1[j];
+                }
+                temp1=nums2[i];
+            }
+        }else
+        {
+            for(int i=0;i<size1;i++)
+            {
+                if(nums1[i]==temp1)
+                    continue;
+                
+                for(int j=0;j<size2;j++)
+                {
+                    if(nums2[j]==temp2)
+                        continue;
+                
+                    if(nums1[i]==nums2[j])
+                    {
+                        result.push_back(nums1[i]);
+                    }else if(nums2[j]>nums1[i])
+                    {
+                        break;
+                    }
+                    temp2=nums2[j];
+                }
+                temp1=nums1[i];
+            }
+        }
+        
+        return result;*/
+    }
+};
