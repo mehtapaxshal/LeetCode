@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        
+        int size1,size2;
+        size1=nums1.size();
+        size2=nums2.size();
+        map<int,int> myMap;
+        vector<int> result;
+        
+        if(size1<size2)
+        {
+        
+            for(int i=0;i<size1;i++)
+                myMap[nums1[i]]++;
+        
+            for(int i=0;i<size2;i++)
+            {
+                if(myMap[nums2[i]]-- && myMap[nums2[i]]>=0)
+                {
+                    result.push_back(nums2[i]);
+                }
+            }
+            
+        }else
+        {
+            for(int i=0;i<size2;i++)
+                myMap[nums2[i]]++;
+        
+            for(int i=0;i<size1;i++)
+            {
+                if(myMap[nums1[i]]-- && myMap[nums1[i]]>=0)
+                {
+                    result.push_back(nums1[i]);
+                }
+            }
+        }
+        
+       return result; 
+    }
+};
