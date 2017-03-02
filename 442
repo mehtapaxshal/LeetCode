@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        
+        vector<int> result;
+        int size=nums.size();
+        for(int i=0;i<size;i++)
+            nums[i]-=1;             //number minus 1 so to have same index and number
+        
+        for(int i=0;i<size;)
+        {
+            if(nums[i]!=nums[nums[i]])
+                swap(nums[i],nums[nums[i]]);        //if index and number are different, then swap so as to make index=number
+            else
+                i++;                                //if both same, then only increment i
+        }
+        
+        for(int i=0;i<size;i++)
+        {
+            if(nums[i]!=i)
+                result.push_back(nums[i]+1);        //if index is not equal to number means number repeats twice
+        }
+        
+        return result;
+        
+    }
+};
