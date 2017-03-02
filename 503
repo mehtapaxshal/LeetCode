@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        
+        int ipSize=nums.size();             //original size of input nums
+        vector<int> result;                 
+        int opSize=0,newSize=0;
+        
+        for(int i=0;i<ipSize;i++)
+            nums.push_back(nums[i]);        //clone all elements into input again for circular array flexibility
+            
+        newSize=nums.size();                //new size of input doubles than original
+            
+        for(int i=0;i<ipSize;i++)
+        {
+            for(int j=i+1; opSize!=ipSize;j++)
+            {
+                if(j==newSize-1)            //if j reaches end of the input array then no next greater element so push -1
+                {
+                    result.push_back(-1);
+                    opSize=result.size();
+                    break;
+                }
+                
+                if(nums[j]>nums[i])         //if next greater element found, push it in result
+                {
+                    result.push_back(nums[j]);
+                    opSize=result.size();
+                    break;
+                }
+            }
+            
+        }
+        
+        return result;
+                
+    }
+};
