@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        
+        int temp=n;
+        int mid=0,result=0;
+        map<int,bool> myMap;
+        while(myMap.find(result)==myMap.end())
+            {
+                result=0;
+                myMap[temp]=true;
+                while(temp!=0)
+                {
+                    mid=temp%10;
+                    result+=(mid*mid);
+                    temp=temp/10;
+                }
+                if(result==1)
+                    return true;
+                temp=result;
+            }
+        return false;
+    }
+};
