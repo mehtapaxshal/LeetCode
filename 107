@@ -1,0 +1,62 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+/* 
+1. Do Level order from top to bottom and store values in vector
+2. Then reverse vector 
+*/
+ 
+class Solution {
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        
+        vector<int> inside;
+        vector<vector<int>> result;
+        if(root==NULL)
+            return result;
+            
+        queue<TreeNode*> q1;
+        q1.push(root);
+        q1.push(NULL);
+        while(!q1.empty())
+        {
+            
+            TreeNode *temp;
+            temp=q1.front();
+
+            if(temp==NULL)
+            {
+                    q1.pop();
+                if(!q1.empty())
+                    q1.push(NULL);
+                result.push_back(inside);
+                inside.clear();
+            }else
+            {
+                if(temp->left!=NULL)
+                {
+                    q1.push(temp->left);
+                }    
+                if(temp->right!=NULL){
+                
+                    q1.push(temp->right);
+                }
+            
+                inside.push_back(temp->val);
+                q1.pop();
+            }
+        }
+        
+        reverse(result.begin(),result.end());
+        return result;
+        
+        
+    }
+};
