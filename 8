@@ -1,0 +1,68 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        
+        
+        int flag=0,flagplus=0;
+        bool temp=false;
+        
+        long result=0;
+        int i=0;
+        
+        while(str[i]==' ')
+        {
+            i++;
+            continue;
+        }
+
+        for(;i<str.length();i++)
+        {
+            
+            if(str[i]=='+' && temp==false)
+            {
+                flagplus++;
+                if(flag==1 || flagplus>1)
+                    return 0;
+            
+                continue;
+            }
+            if(str[i]=='-' && temp==false)
+            {
+                flag++;
+                if(flagplus == 1 || flag>1)
+                    return 0;
+            
+                continue;
+            }
+            
+            if(str[i]>='0' && str[i]<='9')
+            {
+                
+                temp=true;
+                result=result*10+(str[i]-'0');
+                
+                if(flag == 1 && ((-result) <= INT_MIN))
+                {
+                    result = INT_MIN;
+                    flag=0;
+                    break;
+                }
+                else if(result >= INT_MAX)
+                {
+                    result = INT_MAX;
+                    break;
+                }
+                
+            }else
+            {
+                break;
+            }
+        }
+        
+       if(flag==1)
+            result=-result;
+
+        return result;
+        
+    }
+};
