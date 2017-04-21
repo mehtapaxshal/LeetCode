@@ -1,0 +1,84 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        
+        ListNode* result=NULL;
+        ListNode* temp=NULL;
+        ListNode* prev=NULL;
+        
+        if(l1 == NULL && l2 == NULL)
+            return NULL;
+        else if(l1 == NULL)
+            return l2;
+        else if(l2 == NULL)
+            return l1;
+        
+        if(l1->val < l2->val)
+        {
+            temp = new ListNode(l1->val);
+            prev = temp;
+            result=temp;
+            l1=l1->next;
+        }else
+        {
+            temp = new ListNode(l2->val);
+            prev = temp;
+            result=temp;
+            l2=l2->next;
+        }
+        
+        while(l1!=NULL && l2!=NULL)
+        {
+            if(l1->val < l2->val)
+            {
+                temp = new ListNode(l1->val);
+                prev->next = temp;
+                prev=prev->next;
+                l1=l1->next;
+            }else if (l1->val == l2->val)
+            {
+                for(int i=0;i<2;i++)
+                {
+                    temp = new ListNode(l1->val);
+                    prev->next=temp;
+                    prev=prev->next;
+                }
+                l1=l1->next;
+                l2=l2->next;
+            }else
+            {
+                temp = new ListNode(l2->val);
+                prev->next = temp;
+                prev=prev->next;
+                l2=l2->next;
+            }
+            
+        }
+        
+        while(l1!=NULL)
+        {
+            temp = new ListNode(l1->val);
+            prev->next = temp;
+            prev=prev->next;
+            l1=l1->next;
+        }
+        
+        while(l2!=NULL)
+        {
+            temp = new ListNode(l2->val);
+            prev->next = temp;
+            prev=prev->next;
+            l2=l2->next;
+        }
+        
+    return result;
+    }
+};
