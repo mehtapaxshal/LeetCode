@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool checkRecord(string s) {
+        
+        int cntA=0,cntL=0;
+        bool flag=false;
+        for(int i=0;i<s.length();i++)
+        {
+            if(s[i]=='A')
+                cntA++;
+            if(s[i]=='L')
+            {
+                flag=true;
+                cntL++;
+            }else
+            {
+                cntL=0;
+                flag=false;
+            }
+            if(cntA>1)
+                return false;
+            if(flag==true)
+            {
+                if(cntL>2)
+                    return false;
+            }
+            
+                
+        }
+        
+    return true;
+    }
+};
