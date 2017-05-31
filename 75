@@ -1,0 +1,63 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        
+        /** Single Pass Algorithm **/
+        
+        int low=0,mid=0,high=nums.size()-1;
+        
+        while(mid<=high)
+        {
+            if(nums[mid] == 0){
+                swap(nums[low],nums[mid]);
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 2){
+                swap(nums[high],nums[mid]);
+                high--;
+            }
+            else
+                mid++;
+        }
+        
+        
+        
+        /* Two Pass Algorithm
+        
+        int cntR=0,cntW=0,cntB=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i] == 0)
+                cntR++;
+            else if(nums[i] == 1)
+                cntW++;
+            else
+                cntB++;
+            
+        }
+        
+        int i=0;
+            while(cntR!=0)
+            {
+                nums[i] = 0;
+                cntR--;
+                i++;
+            }
+            while(cntW!=0)
+            {
+                nums[i] = 1;
+                cntW--;
+                i++;
+            }
+            while(cntB!=0)
+            {
+                nums[i] = 2;
+                cntB--;
+                i++;
+            }
+*/
+        
+        
+    }
+};
